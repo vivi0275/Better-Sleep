@@ -1,12 +1,16 @@
-import { Bluetooth, Wifi, Bell, Moon, Vibrate, Volume2, User, Shield } from "lucide-react";
+import { Bluetooth, Wifi, Bell, Moon, Vibrate, Volume2, User, Shield, Sun } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
+import { useTheme } from "next-themes";
 
 const Settings = () => {
+  const { theme, setTheme } = useTheme();
+  const isDark = theme === "dark";
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/30 pb-20">
+    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/30 pb-20 transition-colors duration-300">
       <header className="sticky top-0 z-10 bg-card/80 backdrop-blur-md border-b border-border/50 px-6 py-4">
         <div className="max-w-2xl mx-auto">
           <h1 className="text-2xl font-bold text-foreground">Settings</h1>
@@ -80,6 +84,35 @@ const Settings = () => {
                 Gentle Wake
               </Label>
               <Switch id="gentle" defaultChecked />
+            </div>
+          </Card>
+        </div>
+
+        {/* Appearance */}
+        <div>
+          <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
+            Appearance
+          </h2>
+          <Card className="p-6 bg-gradient-to-br from-card to-card/80 shadow-sm border-border/50">
+            <div className="flex items-center justify-between">
+              <Label htmlFor="dark-mode" className="text-sm font-medium text-foreground flex items-center gap-2">
+                {isDark ? (
+                  <>
+                    <Moon className="w-4 h-4" />
+                    Dark Mode
+                  </>
+                ) : (
+                  <>
+                    <Sun className="w-4 h-4" />
+                    Light Mode
+                  </>
+                )}
+              </Label>
+              <Switch 
+                id="dark-mode" 
+                checked={isDark}
+                onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
+              />
             </div>
           </Card>
         </div>
