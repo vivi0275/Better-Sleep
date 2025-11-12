@@ -1,13 +1,28 @@
-import { Bluetooth, Wifi, Bell, Moon, Vibrate, Volume2, User, Shield, Sun } from "lucide-react";
+import { Bluetooth, Wifi, Bell, Moon, Vibrate, Volume2, User, Shield, Sun, LogOut } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
+import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
+import { supabase } from "@/integrations/supabase/client";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Settings = () => {
   const { theme, setTheme } = useTheme();
   const isDark = theme === "dark";
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      toast.error("Failed to sign out");
+    } else {
+      toast.success("Signed out successfully");
+      navigate("/auth");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/30 pb-20 transition-colors duration-300">
@@ -174,6 +189,17 @@ const Settings = () => {
                   <p className="text-xs text-muted-foreground">Control your data</p>
                 </div>
               </div>
+            </Card>
+
+            <Card className="p-6 bg-gradient-to-br from-card to-card/80 shadow-sm border-border/50">
+              <Button
+                variant="destructive"
+                className="w-full"
+                onClick={handleLogout}
+              >
+                <LogOut className="w-4 h-4 mr-2" />
+                Sign Out
+              </Button>
             </Card>
           </div>
         </div>
