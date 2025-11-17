@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Moon, Thermometer, Sun, Sparkles } from "lucide-react";
+import { Moon, Thermometer, Sun, Sparkles, Clock } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import AlarmCard from "@/components/AlarmCard";
 import EnvironmentCard from "@/components/EnvironmentCard";
@@ -16,8 +16,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useDeviceTime, formatTime12Hour, formatDate } from "@/hooks/useDeviceTime";
 
 const Dashboard = () => {
+  const deviceTime = useDeviceTime();
   const [nextAlarm, setNextAlarm] = useState({
     time: "6:30 AM",
     label: "Tomorrow",
@@ -79,6 +81,13 @@ const Dashboard = () => {
         <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
           Better Sleep
         </h1>
+        {/* Current Device Time */}
+        <div className="mt-4 flex items-center justify-center gap-2 text-sm text-muted-foreground">
+          <Clock className="w-4 h-4" />
+          <span className="font-medium">{formatTime12Hour(deviceTime)}</span>
+          <span className="text-xs">•</span>
+          <span className="text-xs">{formatDate(deviceTime)}</span>
+        </div>
       </div>
 
       <main className="max-w-2xl mx-auto px-6 py-6 space-y-6 relative z-10">
