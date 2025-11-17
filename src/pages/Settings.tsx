@@ -209,6 +209,35 @@ const Settings = () => {
           </Card>
         </div>
 
+        {/* Notifications */}
+        <div>
+          <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
+            Notifications
+          </h2>
+          <Card className="p-6 bg-gradient-to-br from-card to-card/80 shadow-sm border-border/50 space-y-4">
+            <div className="flex items-center justify-between">
+              <Label htmlFor="sleep-tips" className="text-sm font-medium text-foreground">
+                Sleep Tips
+              </Label>
+              <Switch id="sleep-tips" defaultChecked />
+            </div>
+
+            <div className="flex items-center justify-between">
+              <Label htmlFor="reminders" className="text-sm font-medium text-foreground">
+                Bedtime Reminders
+              </Label>
+              <Switch id="reminders" defaultChecked />
+            </div>
+
+            <div className="flex items-center justify-between">
+              <Label htmlFor="insights" className="text-sm font-medium text-foreground">
+                Weekly Insights
+              </Label>
+              <Switch id="insights" />
+            </div>
+          </Card>
+        </div>
+
         {/* Appearance */}
         <div>
           <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
@@ -398,35 +427,6 @@ const Settings = () => {
                   Reset to default
                 </Button>
               </div>
-            </div>
-          </Card>
-        </div>
-
-        {/* Notifications */}
-        <div>
-          <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
-            Notifications
-          </h2>
-          <Card className="p-6 bg-gradient-to-br from-card to-card/80 shadow-sm border-border/50 space-y-4">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="sleep-tips" className="text-sm font-medium text-foreground">
-                Sleep Tips
-              </Label>
-              <Switch id="sleep-tips" defaultChecked />
-            </div>
-
-            <div className="flex items-center justify-between">
-              <Label htmlFor="reminders" className="text-sm font-medium text-foreground">
-                Bedtime Reminders
-              </Label>
-              <Switch id="reminders" defaultChecked />
-            </div>
-
-            <div className="flex items-center justify-between">
-              <Label htmlFor="insights" className="text-sm font-medium text-foreground">
-                Weekly Insights
-              </Label>
-              <Switch id="insights" />
             </div>
           </Card>
         </div>
