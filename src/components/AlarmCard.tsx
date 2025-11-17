@@ -1,6 +1,7 @@
-import { Clock, Sparkles } from "lucide-react";
+import { Clock, Sparkles, Edit2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 interface AlarmCardProps {
   alarm: {
@@ -8,9 +9,10 @@ interface AlarmCardProps {
     label: string;
     type: "adaptive" | "manual";
   };
+  onEdit?: () => void;
 }
 
-const AlarmCard = ({ alarm }: AlarmCardProps) => {
+const AlarmCard = ({ alarm, onEdit }: AlarmCardProps) => {
   return (
     <Card className="group p-8 glass-card border-0 glow-card hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 group-hover:from-primary/15 group-hover:to-accent/15 transition-all duration-500" />
@@ -38,6 +40,18 @@ const AlarmCard = ({ alarm }: AlarmCardProps) => {
           </h2>
           <p className="text-muted-foreground font-medium text-lg">{alarm.label}</p>
         </div>
+        {onEdit && (
+          <div className="mt-6">
+            <Button
+              variant="outline"
+              className="w-full border-primary/30 hover:bg-primary/10"
+              onClick={onEdit}
+            >
+              <Edit2 className="w-4 h-4 mr-2" />
+              Change Alarm
+            </Button>
+          </div>
+        )}
       </div>
     </Card>
   );

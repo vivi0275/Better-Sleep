@@ -1,6 +1,10 @@
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
-const data = [
+interface SleepChartProps {
+  data?: Array<{ day: string; hours: number }>;
+}
+
+const defaultData = [
   { day: "Mon", hours: 7.2 },
   { day: "Tue", hours: 6.8 },
   { day: "Wed", hours: 7.5 },
@@ -10,7 +14,7 @@ const data = [
   { day: "Sun", hours: 7.8 },
 ];
 
-const SleepChart = () => {
+const SleepChart = ({ data = defaultData }: SleepChartProps) => {
   return (
     <ResponsiveContainer width="100%" height={200}>
       <AreaChart data={data}>

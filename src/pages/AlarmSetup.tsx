@@ -4,6 +4,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import FigmaViewer from "@/components/FigmaViewer";
+import { FIGMA_CONFIG } from "@/config/figma";
 
 const AlarmSetup = () => {
   const [alarms, setAlarms] = useState([
@@ -97,6 +99,15 @@ const AlarmSetup = () => {
             </div>
           </div>
         </Card>
+
+        {/* Figma Design Integration - Alarm Setup */}
+        <div className="animate-slide-up" style={{ animationDelay: '0.3s' }}>
+          <FigmaViewer 
+            fileKey={FIGMA_CONFIG.fileKey}
+            nodeIds={FIGMA_CONFIG.alarmSetupNodeIds}
+            title="Design Alarm Setup"
+          />
+        </div>
       </main>
     </div>
   );

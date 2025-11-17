@@ -1,9 +1,11 @@
-import { Bluetooth, Wifi, Bell, Moon, Vibrate, Volume2, User, Shield, Sun } from "lucide-react";
+import { Bluetooth, Wifi, Moon, Vibrate, Volume2, Shield, Sun, ChevronRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { useTheme } from "next-themes";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 
 const Settings = () => {
   const { theme, setTheme } = useTheme();
@@ -11,13 +13,51 @@ const Settings = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/30 pb-20 transition-colors duration-300">
-      <header className="sticky top-0 z-10 bg-card/80 backdrop-blur-md border-b border-border/50 px-6 py-4">
-        <div className="max-w-2xl mx-auto">
-          <h1 className="text-2xl font-bold text-foreground">Settings</h1>
-        </div>
-      </header>
+      {/* Title centered at top */}
+      <div className="pt-8 pb-6 text-center">
+        <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          Settings
+        </h1>
+      </div>
 
       <main className="max-w-2xl mx-auto px-6 py-6 space-y-6">
+        {/* Account - En haut */}
+        <div>
+          <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
+            Account
+          </h2>
+          <Card className="p-4 bg-gradient-to-br from-card to-card/80 shadow-sm border-border/50">
+            <div className="flex items-center gap-4">
+              <Avatar className="w-16 h-16 bg-primary/20">
+                <AvatarFallback className="bg-primary/20 text-primary text-xl font-semibold">
+                  A
+                </AvatarFallback>
+              </Avatar>
+              <div className="flex-1">
+                <h3 className="text-lg font-bold text-foreground mb-1">Alex</h3>
+                <p className="text-sm text-muted-foreground mb-2">alex@example.com</p>
+                <Button variant="link" className="p-0 h-auto text-primary text-sm font-medium">
+                  Edit Profile
+                </Button>
+              </div>
+              <ChevronRight className="w-5 h-5 text-muted-foreground" />
+            </div>
+          </Card>
+
+          <Card className="p-4 bg-gradient-to-br from-card to-card/80 shadow-sm border-border/50 mt-3">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+                <Shield className="w-5 h-5 text-accent" />
+              </div>
+              <div className="flex-1">
+                <p className="font-medium text-foreground">Privacy & Security</p>
+                <p className="text-xs text-muted-foreground">Control your data</p>
+              </div>
+              <ChevronRight className="w-5 h-5 text-muted-foreground" />
+            </div>
+          </Card>
+        </div>
+
         {/* Device Connection */}
         <div>
           <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
@@ -144,38 +184,6 @@ const Settings = () => {
               <Switch id="insights" />
             </div>
           </Card>
-        </div>
-
-        {/* Account */}
-        <div>
-          <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
-            Account
-          </h2>
-          <div className="space-y-3">
-            <Card className="p-4 bg-gradient-to-br from-card to-card/80 shadow-sm border-border/50">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <User className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <p className="font-medium text-foreground">Profile</p>
-                  <p className="text-xs text-muted-foreground">Manage your account</p>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-4 bg-gradient-to-br from-card to-card/80 shadow-sm border-border/50">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
-                  <Shield className="w-5 h-5 text-accent" />
-                </div>
-                <div>
-                  <p className="font-medium text-foreground">Privacy & Security</p>
-                  <p className="text-xs text-muted-foreground">Control your data</p>
-                </div>
-              </div>
-            </Card>
-          </div>
         </div>
       </main>
     </div>

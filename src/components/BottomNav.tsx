@@ -1,17 +1,16 @@
-import { Home, Clock, BarChart3, Settings } from "lucide-react";
+import { Home, BarChart3, Settings } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 
 const BottomNav = () => {
   const navItems = [
     { path: "/", icon: Home, label: "Home" },
-    { path: "/alarms", icon: Clock, label: "Alarms" },
     { path: "/analytics", icon: BarChart3, label: "Sleep" },
     { path: "/settings", icon: Settings, label: "Settings" },
   ];
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 glass-card backdrop-blur-2xl border-t border-white/10 px-6 pb-6 pt-3 z-50">
-      <div className="max-w-2xl mx-auto grid grid-cols-4 gap-2">
+      <div className="max-w-2xl mx-auto grid grid-cols-3 gap-2">
         {navItems.map((item) => (
           <NavLink
             key={item.path}
