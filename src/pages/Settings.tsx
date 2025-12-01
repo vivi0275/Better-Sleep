@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Bluetooth, Wifi, Moon, Vibrate, Volume2, Shield, Sun, ChevronRight, Palette, Save, Trash2, Star } from "lucide-react";
+import { Bluetooth, Wifi, Moon, Vibrate, Volume2, Shield, Sun, ChevronRight, Palette, Save, Trash2, Star, Sparkles, CheckCircle2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
@@ -234,6 +234,33 @@ const Settings = () => {
                 Weekly Insights
               </Label>
               <Switch id="insights" />
+            </div>
+          </Card>
+        </div>
+
+        {/* AI Recommendations */}
+        <div>
+          <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
+            Artificial Intelligence
+          </h2>
+          <Card className="p-6 bg-gradient-to-br from-card to-card/80 shadow-sm border-border/50">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center flex-shrink-0">
+                <Sparkles className="w-6 h-6 text-primary" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <h3 className="font-semibold text-foreground">AI Recommendations</h3>
+                  <CheckCircle2 className="w-4 h-4 text-green-500" />
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Smart recommendations are enabled and analyze your sleep data to provide personalized advice.
+                </p>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span className="px-2 py-1 bg-primary/10 rounded-md">Model: DeepResearch 30B</span>
+                  <span className="px-2 py-1 bg-accent/10 rounded-md">Reasoning enabled</span>
+                </div>
+              </div>
             </div>
           </Card>
         </div>
