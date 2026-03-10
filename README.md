@@ -1,74 +1,99 @@
-# Welcome to your Lovable project
+# Better Sleep 🌙
 
-## Project info
+**Better Sleep** is an AI-powered sleep optimization web application that helps you improve your sleep quality by providing smart alarm recommendations, sleep analytics, and real-time environment monitoring.
 
-**URL**: https://lovable.dev/projects/a62c9994-52e5-4474-98bc-a2aa2fc38505
+## Features
 
-## How can I edit this code?
+- **AI-Powered Alarm Recommendations** — The app analyzes your sleep history, environment data, and upcoming calendar events to recommend the optimal wake-up time using the DeepResearch 30B AI model (via [OpenRouter](https://openrouter.ai/)).
+- **Sleep Analytics** — Track and visualize your sleep duration and quality over weekly, monthly, and yearly periods with interactive charts.
+- **Environment Monitoring** — Monitor your sleep environment in real time: temperature, light level, air quality, and noise level.
+- **Google Calendar Integration** — Automatically syncs with your Google Calendar so alarms are scheduled around your upcoming events.
+- **Customizable Themes** — Choose from built-in color palettes or create your own custom theme, with support for dark and light modes. Save up to 5 favorite palettes.
+- **Onboarding & Authentication** — Simple sign-up / sign-in flow with a guided onboarding experience for new users.
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+| Layer | Technology |
+|---|---|
+| Frontend framework | [React 18](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) |
+| Build tool | [Vite](https://vitejs.dev/) |
+| UI components | [shadcn/ui](https://ui.shadcn.com/) (Radix UI primitives) |
+| Styling | [Tailwind CSS](https://tailwindcss.com/) |
+| Routing | [React Router v6](https://reactrouter.com/) |
+| Data fetching | [TanStack Query (React Query)](https://tanstack.com/query) |
+| Charts | [Recharts](https://recharts.org/) |
+| Google Calendar | [Google OAuth](https://developers.google.com/identity) + googleapis |
+| AI recommendations | [OpenRouter API](https://openrouter.ai/) |
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a62c9994-52e5-4474-98bc-a2aa2fc38505) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- [Node.js](https://nodejs.org/) v18 or later and npm
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+### Installation
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# 1. Clone the repository
+git clone https://github.com/vivi0275/Better-Sleep.git
+cd Better-Sleep
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# 2. Install dependencies
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
+# 3. Configure environment variables (see section below)
+cp .env.example .env
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# 4. Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:8080`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Environment Variables
 
-**Use GitHub Codespaces**
+Copy `.env.example` to `.env` and fill in your credentials:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```env
+# Google Calendar OAuth credentials
+VITE_GOOGLE_CLIENT_ID=your_google_client_id_here
+VITE_GOOGLE_CLIENT_SECRET=your_google_client_secret_here
+VITE_GOOGLE_PROJECT_ID=your_google_project_id_here
 
-## What technologies are used for this project?
+# OpenRouter AI API key
+VITE_OPENROUTER_API_KEY=your_openrouter_api_key_here
+```
 
-This project is built with:
+- **Google credentials** — follow the steps in [`GOOGLE_OAUTH_SETUP.md`](GOOGLE_OAUTH_SETUP.md) and [`GOOGLE_CALENDAR_SETUP.md`](GOOGLE_CALENDAR_SETUP.md) to create an OAuth 2.0 client in Google Cloud Console.
+- **OpenRouter API key** — sign up at [openrouter.ai](https://openrouter.ai/) and generate an API key.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Available Scripts
 
-## How can I deploy this project?
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the development server with HMR |
+| `npm run build` | Build the app for production |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
 
-Simply open [Lovable](https://lovable.dev/projects/a62c9994-52e5-4474-98bc-a2aa2fc38505) and click on Share -> Publish.
+## Project Structure
 
-## Can I connect a custom domain to my Lovable project?
+```
+src/
+├── components/       # Reusable UI components (AlarmCard, SleepChart, …)
+├── config/           # App-wide configuration (Figma, theme presets)
+├── hooks/            # Custom React hooks (useGoogleCalendar, useAlarmRecommendation, …)
+├── lib/              # Utility functions
+├── pages/            # Route-level page components
+│   ├── Auth.tsx          # Sign-in / sign-up
+│   ├── OnboardingIntro.tsx
+│   ├── Onboarding.tsx
+│   ├── Dashboard.tsx     # Main screen: alarm, sleep stats, environment
+│   ├── Analytics.tsx     # Sleep history charts and metrics
+│   └── Settings.tsx      # App preferences and theme customization
+└── services/         # External API clients (AI recommendations, Google Calendar, Figma)
+```
 
-Yes, you can!
+## License
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
-# Better-Sleep
+This project is open-source. See the repository for details.
